@@ -47,4 +47,3 @@ export default function NavLinks() {
     </>
   );
 }
-web@1234
