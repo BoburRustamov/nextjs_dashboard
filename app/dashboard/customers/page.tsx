@@ -5,11 +5,12 @@ import Search from '@/app/ui/search';
 export default async function CustomersPage({
   searchParams,
 }: {
-  searchParams?: {
+  searchParams?: Promise<{
     query?: string;
-  };
+  }>;
 }) {
-  const query = searchParams?.query || '';
+  const params = await searchParams;
+  const query = params?.query || '';
 
   // Mock customer data
   const allCustomers = [
