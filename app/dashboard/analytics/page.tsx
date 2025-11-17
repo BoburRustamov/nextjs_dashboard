@@ -1,4 +1,4 @@
-import { ChartBarIcon, TrendingUpIcon, ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/outline';
+import { ChartBarIcon, ArrowTrendingUpIcon, ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/outline';
 
 export default function AnalyticsPage() {
   // Mock analytics data

@@ -2,7 +2,9 @@ import { ArrowLeftIcon, UserCircleIcon, CurrencyDollarIcon, CalendarIcon } from 
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export default function EditInvoicePage({ params }: { params: { id: string } }) {
+export default async function EditInvoicePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+
   // Mock customer data
   const customers = [
     { id: '1', name: 'Delba de Oliveira', email: 'delba@oliveira.com' },
@@ -22,7 +24,7 @@ export default function EditInvoicePage({ params }: { params: { id: string } }) 
     '6': { customer_id: '1', amount: 4200, status: 'pending', date: '2024-02-01' },
   };
 
-  const invoice = invoiceData[params.id as keyof typeof invoiceData];
+  const invoice = invoiceData[id as keyof typeof invoiceData];
 
   if (!invoice) {
     notFound();
@@ -41,7 +43,7 @@ export default function EditInvoicePage({ params }: { params: { id: string } }) 
           <ArrowLeftIcon className="h-4 w-4" />
           Back to Invoices
         </Link>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Edit Invoice #{params.id}</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Edit Invoice #{id}</h1>
         <p className="text-gray-600">Update invoice details and status</p>
       </div>
 
@@ -188,7 +190,7 @@ export default function EditInvoicePage({ params }: { params: { id: string } }) 
             <div className="space-y-4 text-sm">
               <div className="flex justify-between py-2 border-b border-gray-100">
                 <span className="text-gray-600">Invoice ID:</span>
-                <span className="font-semibold text-gray-900">#{params.id}</span>
+                <span className="font-semibold text-gray-900">#{id}</span>
               </div>
               <div className="flex justify-between py-2 border-b border-gray-100">
                 <span className="text-gray-600">Customer:</span>
